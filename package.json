@@ -1,0 +1,25 @@
+{
+  "author": "",
+  "name": "spainjs-talk",
+  "description": "half of a pipe",
+  "version": "0.0.0",
+  "dependencies": {
+    "coffee-script" : "*",
+    "express" : "~3",
+    "request" : "2.9",
+    "hogan.js": "*",
+    "cheerio": "*",
+    "browserify": "*",
+    "underscore": "*",
+    "fileify": "*",
+    "request": "*",
+    "backbone": "*",
+    "hogan.js": "*"
+  },
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  }
+}
+
