@@ -9,6 +9,7 @@ Backbone.Router.prototype.listen = ->
       pushState: true
       silent: true
 
+# Backbone requires routes to not be defined with a leading slash
 Backbone.Router.prototype._routeToRegExp = do (original = Backbone.Router.prototype._routeToRegExp) ->
   (route) =>
     original.call this, route.replace(/^\//, '')

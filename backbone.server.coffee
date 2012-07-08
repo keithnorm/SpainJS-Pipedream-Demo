@@ -1,3 +1,9 @@
+# 1) include express
+# 2) make Router#route delegate to express
+# 3) implement Router#render override for server
+# 4) implement View#toHTML
+# 5) noop View#setElement
+
 _ = require 'underscore'
 Backbone = require 'backbone'
 
