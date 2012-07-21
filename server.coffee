@@ -10,6 +10,31 @@ if process.browser
 else
   require './backbone.server' 
 
+  # this starts the auto reloader code
+  socket = {}
+
+  browserify = require 'browserify'
+  fileify = require 'fileify'
+  fs = require 'fs'
+
+  bundle = browserify
+    watch: true
+    cache: false
+    debug: false
+    exports: false
+
+  bundle.ignore ['express', './lib/router.server', 'Templates', 'request', './reloader', 'fs', 'browserify', 'fileify', 'socket.io']
+
+  templates = fileify('Templates', process.cwd() + '/views', watch: true)
+
+  bundle.use templates
+
+  bundle.addEntry "./server.coffee"
+
+  bundle.on 'bundle', ->
+    fs.writeFile './public/js/app.js', bundle.bundle(), ->
+      socket.emit 'file:change' if socket.emit?
+
 class Router extends Backbone.Router
   routes:
     '/': 'root'
@@ -74,4 +99,11 @@ class AboutView extends Backbone.View
       
 router = new Router()
 
-router.listen 3030
+server = router.listen 3030
+
+unless process.browser
+  io = require('socket.io').listen server
+
+  io.sockets.on 'connection', (sock) ->
+    socket = sock
+

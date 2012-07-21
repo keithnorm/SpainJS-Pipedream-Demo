@@ -9,12 +9,13 @@
     "request" : "2.9",
     "hogan.js": "*",
     "cheerio": "*",
-    "browserify": "*",
+    "browserify": "https://github.com/keithnorm/node-browserify/tarball/master",
     "underscore": "*",
-    "fileify": "*",
+    "fileify": "https://github.com/keithnorm/node-fileify/tarball/master",
     "request": "*",
     "backbone": "*",
-    "hogan.js": "*"
+    "hogan.js": "*",
+    "socket.io": "*"
   },
   "devDependencies": {},
   "optionalDependencies": {},
