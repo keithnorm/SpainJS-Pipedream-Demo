@@ -8,5 +8,5 @@ To run the app, install node and npm, then run `npm install`
 
 If you alter server.coffee, you will need to regenerate the browserified file (public/js/app.js). To regenerate that file run
     
-    node_modules/browserify/bin/cmd server.coffee -o public/js/app.js -i ./backbone.server
+    node_modules/browserify/bin/cmd server.coffee -o public/js/app.js -i ./backbone.server -i socket.io
 
