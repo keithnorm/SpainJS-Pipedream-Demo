@@ -13,7 +13,7 @@
     "underscore": "*",
     "fileify": "https://github.com/keithnorm/node-fileify/tarball/master",
     "request": "*",
-    "backbone": "*",
+    "backbone": "0.9",
     "hogan.js": "*",
     "socket.io": "*"
   },

@@ -1,5 +1,5 @@
 # to regen the browserify file run this:
-# node_modules/browserify/bin/cmd server.coffee -o public/js/app.js -i ./backbone.server
+# node_modules/browserify/bin/cmd server.coffee -o public/js/app.js -i ./backbone.server -i socket.io
 _ = require 'underscore'
 Backbone = require 'backbone'
 
@@ -9,31 +9,6 @@ if process.browser
   require './backbone.client'
 else
   require './backbone.server' 
-
-  # this starts the auto reloader code
-  socket = {}
-
-  browserify = require 'browserify'
-  fileify = require 'fileify'
-  fs = require 'fs'
-
-  bundle = browserify
-    watch: true
-    cache: false
-    debug: false
-    exports: false
-
-  bundle.ignore ['express', './lib/router.server', 'Templates', 'request', './reloader', 'fs', 'browserify', 'fileify', 'socket.io']
-
-  templates = fileify('Templates', process.cwd() + '/views', watch: true)
-
-  bundle.use templates
-
-  bundle.addEntry "./server.coffee"
-
-  bundle.on 'bundle', ->
-    fs.writeFile './public/js/app.js', bundle.bundle(), ->
-      socket.emit 'file:change' if socket.emit?
 
 class Router extends Backbone.Router
   routes:
